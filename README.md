@@ -1,72 +1,182 @@
-# Rosina & The Weavers - Website
+# Rosina & The Weavers - Official Website
 
-Custom website for the New Zealand band "Rosina & The Weavers"
+Custom single-page website for the New Zealand band "Rosina & The Weavers"
+
+## Project Overview
+
+A fully responsive, single-page website featuring the band's music, videos, merch, and contact information. Built with pure HTML/CSS and minimal JavaScript for maximum performance and simplicity.
+
+**Live Development:** `http://localhost:9000` (via Python HTTP server)
 
 ## Project Structure
 
 ```
 ratw-website/
-├── index.html          # Main homepage (Page 1 from Canva design)
+├── index.html              # Single-page website (all sections)
 ├── css/
-│   └── style.css      # Main stylesheet
-├── images/            # Store all images here
-└── README.md          # This file
+│   └── style.css          # Main stylesheet (~900 lines)
+├── js/
+│   └── carousel.js        # YouTube video carousel logic
+├── images/
+│   ├── band-photos/       # 18+ professional band photos
+│   ├── logos/             # Brand logos (white, black, transparent variants)
+│   └── merch/             # Product images (t-shirts, vinyl)
+└── README.md              # This file
 ```
 
 ## Design Specification
 
-- **Color Scheme**: Black background (#000000) with white text
-- **Accent Colors**: Pink/Mauve (to be added)
-- **Design Inspiration**: Troy Kingi's website approach
-- **Style**: Simple, striking, full-page photos
+- **Color Scheme**: Black (#000000) background with white (#FFFFFF) text
+- **Accent Color**: Pink/Mauve (#E91E8C) for interactive elements
+- **Design Philosophy**: Simple, striking, image-first design
+- **Inspiration**: Troy Kingi's website approach
+- **Typography**: System fonts for maximum compatibility
 
-## Current Status
+## Current Status - First Full Draft Complete ✅
 
-✅ Page 1 (Hero/Landing) - HTML & CSS created
-- Black background
-- Centered logo (placeholder - needs actual logo image)
-- Hero image section (placeholder - needs band photo)
+### Implemented Sections (7 total):
 
-## Next Steps
+1. **Hero Section**
+   - Overlapping logo and band photo
+   - Responsive image cropping controls
+   - Full-width layout
 
-1. **Add Images**:
-   - Logo: `rosina-fulllogo-whiteontransparent.png` → save to `/images/`
-   - Band photo: `Live 1.jpg` → save to `/images/`
+2. **About Section**
+   - 2/3 width image on left
+   - Text overlay extending from center into black space
+   - Band bio text
 
-2. **Update HTML** to use real images:
-   ```html
-   <!-- Replace logo placeholder -->
-   <img src="images/rosina-fulllogo-whiteontransparent.png" alt="Rosina & The Weavers">
-   
-   <!-- Replace hero image placeholder -->
-   <img src="images/band-live.jpg" alt="Rosina & The Weavers performing live">
-   ```
+3. **Videos Section**
+   - YouTube video carousel (3 videos)
+   - Custom arrow navigation with Font Awesome icons
+   - Indicator dots for slide position
+   - Auto-pause when switching videos
 
-3. **Build Remaining Pages**:
-   - Page 2: About/Bio section
-   - Page 3: Videos (Youtube embed carousel)
-   - Page 4: Music/Streaming links
-   - Page 5: Behind the scenes (Substack/Patreon)
-   - Page 6: Merch (Bandcamp links)
-   - Page 7: Contact
+4. **Follow Us Section**
+   - Social media icons (Facebook, Instagram, Bandcamp, YouTube, Apple Music, Spotify)
+   - Black & white portrait photo
+   - Font Awesome icons with pink hover effects
 
-## How to View
+5. **Behind the Scenes Section**
+   - Substack and Patreon links
+   - Text overlay on band photo
+   - Bootstrap Icons integration
 
-Simply open `index.html` in any web browser:
-- Right-click → Open with → Chrome/Firefox/Edge
-- Or drag and drop the file into your browser
+6. **Merch Section**
+   - Product images (2x t-shirts, 1x vinyl)
+   - Bandcamp integration
+   - Hover effects with pink glow
 
-## Design Notes
+7. **Contact Section**
+   - Email link with envelope icon
+   - Live performance photo
+   - Pink hover effect on heading/icon
 
-- Fully responsive (mobile, tablet, desktop)
-- Clean, semantic HTML5
-- Modern CSS with flexbox
-- No JavaScript dependencies (for now)
-- Placeholder gradients show where images should go
+## Technical Stack
 
-## Collaboration
+**Frontend:**
+- Pure HTML5 (semantic markup)
+- Vanilla CSS3 (no frameworks)
+- Minimal JavaScript (YouTube IFrame API only)
 
-This project is built collaboratively with A-R (Anna-Rose) providing design direction through Canva mockups.
+**External Dependencies:**
+- Font Awesome 6.5.1 (social icons)
+- Bootstrap Icons 1.11.3 (Substack icon)
+- YouTube IFrame API (video control)
+
+**Browser Compatibility:**
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- CSS Flexbox support required
+- ES6 JavaScript features
+
+## Development Workflow
+
+### Local Server (Required for YouTube embeds)
+```bash
+cd C:\Users\HP\Desktop\Claude_Workspace\ratw-website
+python -m http.server 9000
+```
+Access at: `http://localhost:9000`
+
+**Why needed:** YouTube embeds require HTTP/HTTPS protocol (file:// won't work)
+
+### Hard Refresh (Clear Cache)
+- **Windows:** `Ctrl + Shift + R`
+- **Mac:** `Cmd + Shift + R`
+
+## Responsive Design
+
+### Breakpoints:
+- **Desktop:** Default styles (>768px)
+- **Tablet:** 768px and below
+- **Mobile:** 480px and below
+
+### Mobile Optimizations:
+- Removed `min-height: 100vh` to prevent black gaps
+- Standardized padding: `30px 15px` on all sections
+- Stacked layouts replace side-by-side
+- Removed negative margins that break on small screens
+- Tighter spacing throughout
+
+## CSS Architecture
+
+### Key Features:
+- **Z-index Scale:** Documented hierarchy (1-10 content, 100-200 UI, 1000+ overlays)
+- **Shared Icon Styles:** `.icon-base` class for consistent icon behavior
+- **Extensive Comments:** All adjustable parameters marked with `/* ADJUST THIS */`
+- **Modular Sections:** Each section self-contained with clear boundaries
+
+### Adjustable Parameters:
+Every section includes inline comments for easy customization:
+- Image sizes and cropping
+- Text positioning and sizing
+- Spacing and padding
+- Hover effects and transitions
+
+## Performance Optimizations
+
+- Lazy loading on all images (`loading="lazy"`)
+- Subresource Integrity (SRI) on external stylesheets
+- Security meta tags included (commented out for development)
+- Minimal external dependencies
+
+## Known Issues & Limitations
+
+### YouTube API Console Warnings:
+- `postMessage` origin mismatch warnings (harmless)
+- Will resolve when deployed to HTTPS production domain
+- Does not affect functionality
+
+## Deployment Checklist
+
+- [ ] Uncomment security meta tags in `index.html`
+- [ ] Test on actual mobile devices (iPhone, Android)
+- [ ] Verify all external links work
+- [ ] Test YouTube embeds on production HTTPS domain
+- [ ] Optimize images for web (compression)
+- [ ] Test cross-browser compatibility
+- [ ] Add favicon
+- [ ] Configure proper HTTPS hosting
+
+## Hosting Options
+
+**Recommended static hosts:**
+- Netlify (free tier available)
+- Vercel (free tier available)
+- GitHub Pages (requires public repo)
+- Any static file host with HTTPS
+
+**Requirements:**
+- HTTPS support (required for YouTube embeds)
+- Static file serving
+- No server-side processing needed
+
+## Development Notes
+
+- All images are in place (no placeholders)
+- Website is in first full draft state
+- Client: Anna Rose Carpenter (A-R)
+- Developer: Phil @ Rogue Drones
 
 ---
-*Last updated: February 4, 2026*
+*Last updated: February 7, 2026*
