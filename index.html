@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Security Headers - Uncomment when deploying to production -->
+    <!--
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    -->
+    
+    <title>Rosina & The Weavers</title>
+    
+    <!-- External Stylesheets with Subresource Integrity (SRI) -->
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer">
+    
+    <link rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section class="hero-section">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="images/logos/rosina-fulllogo-whiteontransparent.png" 
+                alt="Rosina & The Weavers" 
+                class="logo-image">
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hero-image-container">
+            <img src="images/band-photos/Live 1.jpg" 
+                alt="Rosina & The Weavers performing live" 
+                class="hero-image"
+                loading="eager">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section dev-separator">
+        <div class="about-container">
+            <div class="about-image-wrapper">
+                <img src="images/band-photos/Harrington Hall - Hallway.jpg" 
+                    alt="Rosina & The Weavers at Harrington Hall" 
+                    class="about-image"
+                    loading="lazy">
+            </div>
+            <div class="about-text-overlay">
+                <p class="about-text">
+                    We are an independent band from Aotearoa, NZ who blend elements of semi-psychedelic rock, folk, pop, idk whatever you want to call it. Genres are basically nonsense. Don't worry though - it's not jazz…
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="videos-section dev-separator">
+        <div class="videos-container">
+            
+            <div class="carousel-wrapper">
+                <!-- Left Arrow -->
+                <button class="carousel-arrow carousel-arrow-left" aria-label="Previous video" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <!-- Video Container -->
+                <div class="carousel-container">
+                    <div class="carousel-track">                        
+
+                        <!-- Video 1 -->
+                        <div class="carousel-slide">
+                            <div class="video-wrapper">
+                                <iframe width="1455" height="818" 
+                                    src="https://www.youtube.com/embed/a_fgZUi_Xg0?list=RDa_fgZUi_Xg0" 
+                                    title="Bowie in the Bathtub - Rosina &amp; The Weavers (Official Video)" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <!-- Video 2 -->
+                        <div class="carousel-slide active">
+                            <div class="video-wrapper">
+                                <iframe width="1455" height="818" 
+                                src="https://www.youtube.com/embed/T2Oo0MAsP7E?list=RDT2Oo0MAsP7E" 
+                                title="Friday Night At The Kentish (Official Music Video)" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                            </div>
+                        </div>
+
+                        <!-- Video 3 -->
+                        <div class="carousel-slide">
+                            <div class="video-wrapper">
+                                <iframe width="1455" height="818"  
+                                    src="https://www.youtube.com/embed/Jsvh3Yy6viM?list=RDJsvh3Yy6viM" 
+                                    title="Rosina &amp; The Weavers - &quot;High Country High&quot; (Official Music Video)" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" 
+                                    allowfullscreen
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Arrow -->
+                <button class="carousel-arrow carousel-arrow-right" aria-label="Next video" disabled>
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <button class="indicator active" data-slide="0" aria-label="Go to video 1"></button>
+                <button class="indicator" data-slide="1" aria-label="Go to video 2"></button>
+                <button class="indicator" data-slide="2" aria-label="Go to video 3"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Follow Us Section (Page 4) -->
+    <section class="follow-section dev-separator">
+        <div class="follow-container">
+            <!-- Text Content (Left Side) -->
+            <div class="follow-text-content">
+                <h2 class="follow-heading">Find and follow us wherever you listen:</h2>
+                
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/rosinaandtheweavers" 
+                       class="social-icon" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Follow us on Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/rosinaandtheweavers" 
+                       class="social-icon" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <!-- Bandcamp -->
+                    <a href="https://rosinaandtheweavers.bandcamp.com" 
+                       class="social-icon" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Follow us on Bandcamp">
+                        <i class="fab fa-bandcamp"></i>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@rosinaandtheweavers" 
+                       class="social-icon" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Follow us on YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                    <!-- Apple Music -->
+                    <a href="https://music.apple.com/nz/artist/rosina-the-weavers/1600581381" 
+                       class="social-icon" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Follow us on Apple Music">
+                        <i class="fab fa-apple"></i>
+                    </a>
+
+                    <!-- Spotify -->
+                    <a href="https://open.spotify.com/artist/25iMzaAjACIW7AEBnpRUiL" 
+                       class="social-icon" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Follow us on Spotify">
+                        <i class="fab fa-spotify"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image (Right Side) -->
+            <div class="follow-image-wrapper">
+                <img src="images/band-photos/Matt.jpg" 
+                     alt="Band member portrait" 
+                     class="follow-image"
+                     loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Behind the Scenes Section -->
+    <section class="bts-section dev-separator">
+        <div class="bts-container">
+            <div class="bts-image-wrapper">
+                <img src="images/band-photos/Rosina Street Closeup.jpg" 
+                    alt="Rosina Street Closeup" 
+                    class="bts-image"
+                    loading="lazy">
+            </div>
+            <div class="bts-text-overlay">
+                <h2 class="bts-heading">Get behind the scenes</h2>
+                <p class="bts-text">
+                    Subscribe for songs-in-progress, late night wonderings, and journalistic ramblings from Rosina
+                </p>
+                <!-- Behind the Scenes Icons -->
+                <div class="bts-icons">
+                    <!-- Substack -->
+                    <a href="https://substack.com/@rosinarecords?utm_source=global-search" 
+                       class="bts-icon" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Behind the scenes - Substack">
+                        <i class="bi bi-substack"></i>
+                    </a>
+
+                    <!-- Patreon -->
+                    <a href="https://www.patreon.com/cw/u92877351" 
+                       class="bts-icon" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Behind the scenes - Patreon">
+                        <i class="fab fa-patreon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merch Section -->
+    <section class="merch-section dev-separator">
+        <div class="merch-container">
+            <!-- Text Content (Left Side) -->
+            <div class="merch-text-content">
+                <h2 class="merch-heading">Buy a vinyl or a t-shirt and help us stay alive long enough to record the next album.</h2>
+                
+                <!-- Bandcamp Text + Icon -->
+                <div class="merch-bandcamp-wrapper">
+                    <p class="merch-subtext">Head through to Bandcamp to purchase.</p>
+                    <a href="https://rosinaandtheweavers.bandcamp.com/merch" 
+                       class="merch-icon" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Shop on Bandcamp">
+                        <i class="fab fa-bandcamp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product Images (Right Side) -->
+            <div class="merch-images-wrapper">
+                <!-- Black T-Shirt -->
+                <a href="https://rosinaandtheweavers.bandcamp.com/merch" 
+                   class="merch-product-link" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Buy Black T-Shirt">
+                    <img src="images/merch/black-t.png" 
+                         alt="Black T-Shirt" 
+                         class="merch-product-image"
+                         loading="lazy">
+                </a>
+
+                <!-- White T-Shirt -->
+                <a href="https://rosinaandtheweavers.bandcamp.com/merch" 
+                   class="merch-product-link" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Buy White T-Shirt">
+                    <img src="images/merch/white-t.png" 
+                         alt="White T-Shirt" 
+                         class="merch-product-image"
+                         loading="lazy">
+                </a>
+
+                <!-- Vinyl Record -->
+                <a href="https://rosinaandtheweavers.bandcamp.com/merch" 
+                   class="merch-product-link" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Buy Vinyl Record">
+                    <img src="images/merch/vinyl-1.png" 
+                         alt="Vinyl Record" 
+                         class="merch-product-image"
+                         loading="lazy">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact-us-section dev-separator">
+        <div class="contact-us-container">
+            <div class="contact-us-image-wrapper">
+                <img src="images/band-photos/Live 2.jpg" 
+                    alt="Rosina & The Weavers performing live" 
+                    class="contact-us-image"
+                    loading="lazy">
+            </div>
+            <div class="contact-us-text-overlay">
+                <!-- Entire heading is now a link -->
+                <a href="mailto:rosinaandtheweavers@gmail.com" 
+                   class="contact-us-heading-link" 
+                   aria-label="Email us">
+                    <h2 class="contact-us-heading">Email us</h2>
+                    <i class="fas fa-envelope contact-us-icon-inline"></i>
+                </a>
+                <p class="contact-us-text">
+                    Yes, we'd like to play your venue, your festival, <br> and your private yacht.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript - Load at end for better performance -->
+    <script src="js/carousel.js"></script>
+</body>
+</html>
