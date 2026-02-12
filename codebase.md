@@ -29,6 +29,7 @@ build/
 # css\style.css
 
 ```css
+
 /* Rosina & The Weavers - Main Stylesheet */
 
 /* Reset and Base Styles */
@@ -152,13 +153,97 @@ body {
     }
 }
 
+/* ===================================
+   SCROLL DOWN ARROW
+   =================================== */
+
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 40px; /* ADJUST THIS: Distance from bottom of hero section */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    
+    /* Arrow icon styling */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* ADJUST THIS: Arrow circle size */
+    height: 50px;
+    
+    /* Visual styling */
+    color: rgba(255, 255, 255, 0.7); /* ADJUST THIS: Arrow color (semi-transparent white) */
+    background-color: rgba(255, 255, 255, 0.05); /* ADJUST THIS: Background (very subtle) */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* ADJUST THIS: Border color */
+    border-radius: 50%; /* Makes it a circle */
+    
+    /* Animation */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    /* Bouncing animation */
+    animation: bounce 2s infinite;
+}
+
+/* Arrow icon size */
+.scroll-down-arrow i {
+    font-size: 24px; /* ADJUST THIS: Icon glyph size */
+}
+
+/* Hover effect */
+.scroll-down-arrow:hover {
+    color: #E91E8C; /* ADJUST THIS: Pink/mauve on hover */
+    background-color: rgba(233, 30, 140, 0.1);
+    border-color: #E91E8C;
+    transform: translateX(-50%) translateY(-5px); /* Lift up slightly */
+}
+
+/* Bouncing animation keyframes */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 768px) {
+    .scroll-down-arrow {
+        bottom: 30px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scroll-down-arrow i {
+        font-size: 20px;
+    }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 480px) {
+    .scroll-down-arrow {
+        bottom: 20px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .scroll-down-arrow i {
+        font-size: 18px;
+    }
+}
+
 /* ============================================ */
 /* ABOUT SECTION */
 /* ============================================ */
 
 /* Development Separator - Remove when spacing is perfect */
 .dev-separator {
-    border-top: 2px solid #E91E8C;
+    border-top: 0px solid #E91E8C;
 }
 
 .about-section {
@@ -276,12 +361,13 @@ body {
    =================================== */
 
 .videos-section {
-    padding: 80px 20px;
+    padding: 80px 20px; /* ADJUST THIS: Top/bottom spacing around entire video section */
     background-color: #000000;
 }
 
 .videos-container {
-    max-width: 1400px;
+    max-width: none; /* ADJUST THIS: Full width container (change to 1400px to limit max width) */
+    width: 100%; /* Container spans full width */
     margin: 0 auto;
 }
 
@@ -305,27 +391,37 @@ body {
     z-index: 5;
 }
 
+/* Carousel wrapper - now stacks vertically (video on top, controls below) */
 .carousel-wrapper {
     display: flex;
+    flex-direction: column; /* ADJUST THIS: Stack video and controls vertically */
     align-items: center;
-    justify-content: center;
-    gap: 40px;
+    gap: 30px; /* ADJUST THIS: Space between video player and controls (arrows + dots) */
     position: relative;
     z-index: 1;
 }
 
+/* Video container - full width with small side buffers */
 .carousel-container {
-    width: 100%;
-    max-width: 1200px; /* ADJUST THIS: Controls video player size (was 900px) */
-    /* OPTIONS:
-       - 900px  = Original size (smaller)
-       - 1200px = Medium-large (recommended)
-       - 1400px = Very large
-       - none   = Full screen width
+    width: calc(100% - 80px); /* ADJUST THIS: Full width minus left/right buffer (40px each side) */
+    /* BUFFER OPTIONS:
+       - calc(100% - 80px)  = 40px buffer on each side (total 80px, DEFAULT)
+       - calc(100% - 120px) = 60px buffer on each side (total 120px, more breathing room)
+       - calc(100% - 40px)  = 20px buffer on each side (total 40px, tighter)
+       - 100%               = No buffer, truly full width edge-to-edge
     */
+    max-width: none; /* No maximum width limit - uses all available space */
     overflow: hidden;
     position: relative;
     z-index: 1;
+}
+
+/* Controls container - arrows and dots in one row */
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* ADJUST THIS: Space between arrows and indicator dots */
+    justify-content: center;
 }
 
 .carousel-track {
@@ -362,13 +458,21 @@ body {
     border: none;
 }
 
+/* Navigation arrow controls - positioned below video player */
+.carousel-arrow-container {
+    display: flex;
+    gap: 20px; /* ADJUST THIS: Space between left and right arrows */
+    justify-content: center;
+    align-items: center;
+}
+
 .carousel-arrow {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1); /* ADJUST THIS: Arrow background (semi-transparent white) */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* ADJUST THIS: Arrow border color */
+    color: #ffffff; /* ADJUST THIS: Arrow icon color */
+    width: 60px; /* ADJUST THIS: Arrow button width */
+    height: 60px; /* ADJUST THIS: Arrow button height */
+    border-radius: 50%; /* Makes arrow button circular */
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -382,52 +486,56 @@ body {
 }
 
 .carousel-arrow:disabled {
-    opacity: 0.3;
+    opacity: 0.3; /* ADJUST THIS: Opacity when arrow is disabled (at start/end of carousel) */
     cursor: not-allowed;
 }
 
+/* Hover effect - pink/mauve accent */
 .carousel-arrow:hover:not(:disabled) {
-    background-color: rgba(233, 30, 140, 0.3);
-    border-color: #E91E8C;
-    transform: scale(1.1);
+    background-color: rgba(233, 30, 140, 0.3); /* ADJUST THIS: Pink background on hover */
+    border-color: #E91E8C; /* ADJUST THIS: Pink border on hover */
+    transform: scale(1.1); /* ADJUST THIS: Slightly enlarge on hover */
 }
 
 .carousel-arrow:active:not(:disabled) {
-    transform: scale(0.95);
+    transform: scale(0.95); /* ADJUST THIS: Slightly shrink when clicked */
 }
 
+/* Arrow icon sizing */
 .carousel-arrow svg,
 .carousel-arrow i {
     pointer-events: none;
+    font-size: 28px; /* ADJUST THIS: Size of the arrow icon glyph */
 }
 
+/* Indicator dots - show which video is currently active */
 .carousel-indicators {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    margin-top: 40px;
+    gap: 12px; /* ADJUST THIS: Space between individual indicator dots */
 }
 
 .indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.3);
+    width: 12px; /* ADJUST THIS: Indicator dot width */
+    height: 12px; /* ADJUST THIS: Indicator dot height */
+    border-radius: 50%; /* Makes indicators circular */
+    background-color: rgba(255, 255, 255, 0.3); /* ADJUST THIS: Inactive dot color */
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .indicator:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    transform: scale(1.2);
+    background-color: rgba(255, 255, 255, 0.5); /* ADJUST THIS: Dot color on hover */
+    transform: scale(1.2); /* ADJUST THIS: Slightly enlarge on hover */
 }
 
 .indicator.active {
-    background-color: #E91E8C;
-    transform: scale(1.3);
+    background-color: #E91E8C; /* ADJUST THIS: Active dot color (pink/mauve) */
+    transform: scale(1.3); /* ADJUST THIS: Active dot is larger */
 }
 
+/* Tablet responsive adjustments */
 @media (max-width: 768px) {
     .section-title {
         font-size: 2rem;
@@ -435,81 +543,81 @@ body {
     }
 
     .carousel-wrapper {
-        gap: 20px;
+        gap: 20px; /* Tighter spacing between video and controls */
+    }
+
+    .carousel-container {
+        width: calc(100% - 60px); /* Slightly smaller side buffers on tablet (30px each) */
+    }
+
+    .carousel-arrow-container {
+        gap: 15px; /* Tighter spacing between arrows */
     }
 
     .carousel-arrow {
-        width: 50px;
+        width: 50px; /* Smaller arrow buttons on tablet */
         height: 50px;
     }
 
     .carousel-arrow svg,
     .carousel-arrow i {
-        font-size: 24px;
+        font-size: 24px; /* Smaller arrow icons on tablet */
     }
 }
 
+/* Mobile responsive adjustments */
 @media (max-width: 480px) {
     .videos-section {
-        padding: 30px 15px; /* FIX: Was 60px - too much vertical space */
+        padding: 30px 15px; /* Tighter mobile spacing */
     }
 
     .section-title {
         font-size: 1.8rem;
-        margin-bottom: 20px; /* FIX: Was 30px - tighter spacing */
+        margin-bottom: 20px; /* Tighter spacing on mobile */
     }
 
     .carousel-wrapper {
-        gap: 15px;
+        gap: 15px; /* Tighter spacing between video and controls */
+    }
+
+    .carousel-container {
+        width: calc(100% - 30px); /* Minimal side buffers on mobile (15px each) */
+    }
+
+    .carousel-arrow-container {
+        gap: 12px; /* Tighter spacing between arrows */
     }
 
     .carousel-arrow {
-        width: 45px;
+        width: 45px; /* Smaller arrow buttons on mobile */
         height: 45px;
     }
 
     .carousel-arrow svg,
     .carousel-arrow i {
-        font-size: 20px;
+        font-size: 20px; /* Smaller arrow icons on mobile */
     }
 
     .carousel-indicators {
-        margin-top: 20px; /* FIX: Was 30px - tighter spacing */
-        gap: 10px;
+        gap: 10px; /* Tighter spacing between dots */
+    }
+
+    .carousel-controls {
+        gap: 25px; /* Tighter spacing between arrows and dots on mobile */
     }
 
     .indicator {
-        width: 10px;
+        width: 10px; /* Smaller indicator dots on mobile */
         height: 10px;
     }
 }
 
 /* ============================================ */
-/* SHARED ICON STYLES (Base Class)
-   Used by: Follow, BTS, Merch, Contact sections
+/* SHARED ICON STYLES                           
+   All icon styling is consolidated at the 
+   bottom of this file — search for            
+   "MASTER ICON STYLES" to find it.            
    ============================================ */
-
-.icon-base {
-    width: 50px; /* ADJUST THIS: Icon container size (width) */
-    height: 50px; /* ADJUST THIS: Icon container size (height) */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff; /* ADJUST THIS: Icon color (default white) */
-    background-color: transparent; /* ADJUST THIS: Background color behind icon */
-    border-radius: 8px; /* ADJUST THIS: Rounded corners (0 = square, 50% = circle) */
-    transition: all 0.3s ease; /* ADJUST THIS: Animation speed for hover effects */
-    text-decoration: none;
-    padding: 8px; /* ADJUST THIS: Internal padding around icon */
-    font-size: 42px; /* ADJUST THIS: Font Awesome icon size (bigger number = bigger icon) */
-}
-
-/* Icon hover effect - pink/mauve accent */
-.icon-base:hover {
-    color: #E91E8C; /* ADJUST THIS: Icon color on hover (default pink/mauve) */
-    background-color: rgba(233, 30, 140, 0.1); /* ADJUST THIS: Background opacity on hover */
-    transform: translateY(-3px) scale(1.1); /* ADJUST THIS: Hover lift + scale effect */
-}
 
 /* ============================================ */
 /* FOLLOW US SECTION (Page 4) */
@@ -563,12 +671,8 @@ body {
 .social-icons {
     display: flex;
     flex-wrap: wrap;
-    gap: 49px; /* ADJUST THIS: Space between icons */
+    gap: 50px; /* ADJUST THIS: Space between icons */
     align-items: center;
-}
-
-.social-icon {
-    /* Extends .icon-base - see shared styles above */
 }
 
 /* ===================================
@@ -674,13 +778,13 @@ body {
     }
 
     .social-icons {
-        gap: 15px;
+        gap: 20px;
     }
 
     .social-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 20px; /* Smaller on mobile */
+        width: 20px;
+        height: 20px;
+        font-size: 10px; /* Smaller on mobile */
     }
 
     .follow-image-wrapper {
@@ -768,12 +872,8 @@ body {
 .bts-icons {
     display: flex;
     flex-wrap: wrap;
-    gap: 49px; /* ADJUST THIS: Space between icons */
+    gap: 40px; /* ADJUST THIS: Space between icons */
     align-items: center;
-}
-
-.bts-icon {
-    /* Extends .icon-base - see shared styles above */
 }
 
 /* Responsive Design - Tablet */
@@ -804,15 +904,9 @@ body {
         flex-direction: column;
     }
 
-    .bts-image-wrapper {
-        width: 100%;
-    }
-
-    .bts-image {
-        max-height: 400px;
-    }
-
+    /* MOBILE REORDERING: Swap image and text positions */
     .bts-text-overlay {
+        order: 1; /* Text appears first on mobile */
         position: relative;
         left: 0;
         top: 0;
@@ -822,10 +916,25 @@ body {
         margin-top: 20px;
     }
 
+    .bts-image-wrapper {
+        width: 100%;
+        order: 2; /* Image appears second on mobile */
+    }
+
+    .bts-image {
+        max-height: 400px;
+    }
+
     .bts-text {
         font-size: 1.1rem;
         line-height: 1.6;
     }
+
+    .bts-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 10px; /* Smaller on mobile */
+    }   
 }
 
 /* ============================================ */
@@ -833,11 +942,11 @@ body {
 /* ============================================ */
 
 .merch-section {
-    min-height: 100vh;
+    min-height: auto; /* FIXED: Remove forced full-screen height - let content determine height */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 20px; /* FIXED: Standardized padding */
+    padding: 80px 20px; /* ADJUST THIS: Vertical spacing around section */
     position: relative;
     background-color: #000000;
 }
@@ -891,10 +1000,6 @@ body {
     align-items: center; /* Vertically align text and icon */
     gap: 15px; /* ADJUST THIS: Space between text and icon */
     margin-bottom: 0; /* ADJUST THIS: Space below the text+icon row */
-}
-
-.merch-icon {
-    /* Extends .icon-base - see shared styles above */
 }
 
 /* ===================================
@@ -954,7 +1059,7 @@ body {
     .merch-text-content {
         width: 100%; /* Full width on tablet */
         padding: 40px 60px;
-        text-align: center; /* Center text on tablet */
+        text-align: left; /* ADJUST THIS: Left-aligned text on tablet (was center) */
     }
 
     .merch-heading {
@@ -966,7 +1071,7 @@ body {
     }
 
     .merch-bandcamp-wrapper {
-        justify-content: center; /* Center text+icon on tablet */
+        justify-content: flex-start; /* ADJUST THIS: Left-aligned on tablet (was center) */
     }
 
     .merch-images-wrapper {
@@ -1123,7 +1228,7 @@ body {
 
 /* Inline icon (next to heading) - now inside the link */
 .contact-us-icon-inline {
-    font-size: 50px; /* ADJUST THIS: Icon size - matches heading scale */
+    font-size: 40px; /* ADJUST THIS: Icon size - matches heading scale */
     color: inherit; /* Inherit color from parent link */
     transition: all 0.3s ease; /* Smooth transitions */
 }
@@ -1134,10 +1239,6 @@ body {
     flex-wrap: wrap;
     gap: 49px; /* ADJUST THIS: Space between icons */
     align-items: center;
-}
-
-.contact-us-icon {
-    /* Extends .icon-base - see shared styles above */
 }
 
 /* Responsive Design - Tablet */
@@ -1195,7 +1296,7 @@ body {
     }
 
     .contact-us-icon-inline {
-        font-size: 40px; /* Smaller icon on mobile */
+        font-size: 32px; /* Smaller icon on mobile */
     }
 
     .contact-us-text {
@@ -1205,35 +1306,48 @@ body {
 }
 
 /* ============================================ */
-/* APPLY ICON-BASE TO ALL ICON CLASSES */
-/* ============================================ */
+/* MASTER ICON STYLES
+   Controls: .social-icon, .bts-icon, 
+             .merch-icon, .contact-us-icon
+   
+   HOW ICON SIZING WORKS:
+   Total space per icon = width + (padding × 2) + gap
+   Example: 40px + (6px × 2) + 20px = 72px per icon
+   For 7 icons on one line you need: 72 × 7 = 504px
+   
+   To fit more icons on one line, reduce:
+     1. gap     (in .social-icons etc. above — space BETWEEN icons)
+     2. padding (clickable area AROUND the icon glyph)
+     3. width/height (the icon container box)
+     4. font-size (the icon glyph itself — visual size only)
+   ============================================ */
 
 .social-icon,
 .bts-icon,
 .merch-icon,
 .contact-us-icon {
-    /* All inherit from .icon-base */
-    width: 50px;
-    height: 50px;
+    width: 30px;            /* ADJUST THIS: Container box width */
+    height: 30px;           /* ADJUST THIS: Container box height */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
+    color: #ffffff;         /* ADJUST THIS: Icon color (default white) */
     background-color: transparent;
-    border-radius: 8px;
+    border-radius: 8px;     /* ADJUST THIS: Rounded corners (50% = circle) */
     transition: all 0.3s ease;
     text-decoration: none;
-    padding: 8px;
-    font-size: 42px;
+    padding: 6px;           /* ADJUST THIS: Clickable area around icon glyph */
+    font-size: 35px;        /* ADJUST THIS: Icon glyph size (visual size only) */
 }
 
+/* Hover effect — pink/mauve accent */
 .social-icon:hover,
 .bts-icon:hover,
 .merch-icon:hover,
 .contact-us-icon:hover {
-    color: #E91E8C;
-    background-color: rgba(233, 30, 140, 0.1);
-    transform: translateY(-3px) scale(1.1);
+    color: #E91E8C;                          /* ADJUST THIS: Hover color */
+    background-color: rgba(233, 30, 140, 0.1); /* ADJUST THIS: Hover background */
+    transform: translateY(-3px) scale(1.1);  /* ADJUST THIS: Lift + grow on hover */
 }
 
 ```
@@ -1404,6 +1518,8 @@ This is a binary file of the type: Image
           integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
           crossorigin="anonymous"
           referrerpolicy="no-referrer">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v6/font/simple-icons.min.css">
     
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -1423,10 +1539,15 @@ This is a binary file of the type: Image
                 class="hero-image"
                 loading="eager">
         </div>
+
+        <!-- Scroll Down Arrow -->
+        <a href="#about" class="scroll-down-arrow" aria-label="Scroll to About section">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
     <!-- About Section -->
-    <section class="about-section dev-separator">
+    <section id="about" class="about-section dev-separator">
         <div class="about-container">
             <div class="about-image-wrapper">
                 <img src="images/band-photos/Harrington Hall - Hallway.jpg" 
@@ -1447,11 +1568,6 @@ This is a binary file of the type: Image
         <div class="videos-container">
             
             <div class="carousel-wrapper">
-                <!-- Left Arrow -->
-                <button class="carousel-arrow carousel-arrow-left" aria-label="Previous video" disabled>
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-
                 <!-- Video Container -->
                 <div class="carousel-container">
                     <div class="carousel-track">                        
@@ -1503,17 +1619,25 @@ This is a binary file of the type: Image
                     </div>
                 </div>
 
-                <!-- Right Arrow -->
-                <button class="carousel-arrow carousel-arrow-right" aria-label="Next video" disabled>
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
+                <!-- Controls: Arrows + Dots in one row -->
+                <div class="carousel-controls">
+                    <!-- Left Arrow -->
+                    <button class="carousel-arrow carousel-arrow-left" aria-label="Previous video">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
 
-            <!-- Carousel Indicators -->
-            <div class="carousel-indicators">
-                <button class="indicator active" data-slide="0" aria-label="Go to video 1"></button>
-                <button class="indicator" data-slide="1" aria-label="Go to video 2"></button>
-                <button class="indicator" data-slide="2" aria-label="Go to video 3"></button>
+                    <!-- Indicator Dots -->
+                    <div class="carousel-indicators">
+                        <button class="indicator active" data-slide="0" aria-label="Go to video 1"></button>
+                        <button class="indicator" data-slide="1" aria-label="Go to video 2"></button>
+                        <button class="indicator" data-slide="2" aria-label="Go to video 3"></button>
+                    </div>
+
+                    <!-- Right Arrow -->
+                    <button class="carousel-arrow carousel-arrow-right" aria-label="Next video">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -1580,6 +1704,15 @@ This is a binary file of the type: Image
                        aria-label="Follow us on Spotify">
                         <i class="fab fa-spotify"></i>
                     </a>
+
+                    <!-- Tidal -->
+                    <a href="https://tidal.com/search/albums?q=rosina%20and%20the%20weavers" 
+                       class="social-icon" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       aria-label="Follow us on Tidal">
+                        <i class="si si-tidal"></i>
+                    </a>
                 </div>
             </div>
 
@@ -1605,7 +1738,7 @@ This is a binary file of the type: Image
             <div class="bts-text-overlay">
                 <h2 class="bts-heading">Get behind the scenes</h2>
                 <p class="bts-text">
-                    Subscribe for songs-in-progress, late night wonderings, and journalistic ramblings from Rosina
+                    Subscribe for songs-in-progress, late night wonderings, and journalistic ramblings from Rosina:
                 </p>
                 <!-- Behind the Scenes Icons -->
                 <div class="bts-icons">
@@ -1640,7 +1773,7 @@ This is a binary file of the type: Image
                 
                 <!-- Bandcamp Text + Icon -->
                 <div class="merch-bandcamp-wrapper">
-                    <p class="merch-subtext">Head through to Bandcamp to purchase.</p>
+                    <p class="merch-subtext">Head through to Bandcamp to purchase</p>
                     <a href="https://rosinaandtheweavers.bandcamp.com/merch" 
                        class="merch-icon" 
                        target="_blank" 
@@ -1710,7 +1843,7 @@ This is a binary file of the type: Image
                     <i class="fas fa-envelope contact-us-icon-inline"></i>
                 </a>
                 <p class="contact-us-text">
-                    Yes, we'd like to play your venue, your festival, <br> and your private yacht.
+                    Yes, we'd like to play your venue, your festival, and your private yacht...
                 </p>
             </div>
         </div>
@@ -2047,78 +2180,188 @@ These changes **only affect mobile devices (≤480px width)**. Desktop and table
 # README.md
 
 ```md
-# Rosina & The Weavers - Website
+# Rosina & The Weavers - Official Website
 
-Custom website for the New Zealand band "Rosina & The Weavers"
+Custom single-page website for the New Zealand band "Rosina & The Weavers"
+
+## Project Overview
+
+A fully responsive, single-page website featuring the band's music, videos, merch, and contact information. Built with pure HTML/CSS and minimal JavaScript for maximum performance and simplicity.
+
+**Live Development:** `http://localhost:9000` (via Python HTTP server)
 
 ## Project Structure
 
 \`\`\`
 ratw-website/
-├── index.html          # Main homepage (Page 1 from Canva design)
+├── index.html              # Single-page website (all sections)
 ├── css/
-│   └── style.css      # Main stylesheet
-├── images/            # Store all images here
-└── README.md          # This file
+│   └── style.css          # Main stylesheet (~900 lines)
+├── js/
+│   └── carousel.js        # YouTube video carousel logic
+├── images/
+│   ├── band-photos/       # 18+ professional band photos
+│   ├── logos/             # Brand logos (white, black, transparent variants)
+│   └── merch/             # Product images (t-shirts, vinyl)
+└── README.md              # This file
 \`\`\`
 
 ## Design Specification
 
-- **Color Scheme**: Black background (#000000) with white text
-- **Accent Colors**: Pink/Mauve (to be added)
-- **Design Inspiration**: Troy Kingi's website approach
-- **Style**: Simple, striking, full-page photos
+- **Color Scheme**: Black (#000000) background with white (#FFFFFF) text
+- **Accent Color**: Pink/Mauve (#E91E8C) for interactive elements
+- **Design Philosophy**: Simple, striking, image-first design
+- **Inspiration**: Troy Kingi's website approach
+- **Typography**: System fonts for maximum compatibility
 
-## Current Status
+## Current Status - First Full Draft Complete ✅
 
-✅ Page 1 (Hero/Landing) - HTML & CSS created
-- Black background
-- Centered logo (placeholder - needs actual logo image)
-- Hero image section (placeholder - needs band photo)
+### Implemented Sections (7 total):
 
-## Next Steps
+1. **Hero Section**
+   - Overlapping logo and band photo
+   - Responsive image cropping controls
+   - Full-width layout
 
-1. **Add Images**:
-   - Logo: `rosina-fulllogo-whiteontransparent.png` → save to `/images/`
-   - Band photo: `Live 1.jpg` → save to `/images/`
+2. **About Section**
+   - 2/3 width image on left
+   - Text overlay extending from center into black space
+   - Band bio text
 
-2. **Update HTML** to use real images:
-   \`\`\`html
-   <!-- Replace logo placeholder -->
-   <img src="images/rosina-fulllogo-whiteontransparent.png" alt="Rosina & The Weavers">
-   
-   <!-- Replace hero image placeholder -->
-   <img src="images/band-live.jpg" alt="Rosina & The Weavers performing live">
-   \`\`\`
+3. **Videos Section**
+   - YouTube video carousel (3 videos)
+   - Custom arrow navigation with Font Awesome icons
+   - Indicator dots for slide position
+   - Auto-pause when switching videos
 
-3. **Build Remaining Pages**:
-   - Page 2: About/Bio section
-   - Page 3: Videos (Youtube embed carousel)
-   - Page 4: Music/Streaming links
-   - Page 5: Behind the scenes (Substack/Patreon)
-   - Page 6: Merch (Bandcamp links)
-   - Page 7: Contact
+4. **Follow Us Section**
+   - Social media icons (Facebook, Instagram, Bandcamp, YouTube, Apple Music, Spotify)
+   - Black & white portrait photo
+   - Font Awesome icons with pink hover effects
 
-## How to View
+5. **Behind the Scenes Section**
+   - Substack and Patreon links
+   - Text overlay on band photo
+   - Bootstrap Icons integration
 
-Simply open `index.html` in any web browser:
-- Right-click → Open with → Chrome/Firefox/Edge
-- Or drag and drop the file into your browser
+6. **Merch Section**
+   - Product images (2x t-shirts, 1x vinyl)
+   - Bandcamp integration
+   - Hover effects with pink glow
 
-## Design Notes
+7. **Contact Section**
+   - Email link with envelope icon
+   - Live performance photo
+   - Pink hover effect on heading/icon
 
-- Fully responsive (mobile, tablet, desktop)
-- Clean, semantic HTML5
-- Modern CSS with flexbox
-- No JavaScript dependencies (for now)
-- Placeholder gradients show where images should go
+## Technical Stack
 
-## Collaboration
+**Frontend:**
+- Pure HTML5 (semantic markup)
+- Vanilla CSS3 (no frameworks)
+- Minimal JavaScript (YouTube IFrame API only)
 
-This project is built collaboratively with A-R (Anna-Rose) providing design direction through Canva mockups.
+**External Dependencies:**
+- Font Awesome 6.5.1 (social icons)
+- Bootstrap Icons 1.11.3 (Substack icon)
+- YouTube IFrame API (video control)
+
+**Browser Compatibility:**
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- CSS Flexbox support required
+- ES6 JavaScript features
+
+## Development Workflow
+
+### Local Server (Required for YouTube embeds)
+\`\`\`bash
+cd C:\Users\HP\Desktop\Claude_Workspace\ratw-website
+python -m http.server 9000
+\`\`\`
+Access at: `http://localhost:9000`
+
+**Why needed:** YouTube embeds require HTTP/HTTPS protocol (file:// won't work)
+
+### Hard Refresh (Clear Cache)
+- **Windows:** `Ctrl + Shift + R`
+- **Mac:** `Cmd + Shift + R`
+
+## Responsive Design
+
+### Breakpoints:
+- **Desktop:** Default styles (>768px)
+- **Tablet:** 768px and below
+- **Mobile:** 480px and below
+
+### Mobile Optimizations:
+- Removed `min-height: 100vh` to prevent black gaps
+- Standardized padding: `30px 15px` on all sections
+- Stacked layouts replace side-by-side
+- Removed negative margins that break on small screens
+- Tighter spacing throughout
+
+## CSS Architecture
+
+### Key Features:
+- **Z-index Scale:** Documented hierarchy (1-10 content, 100-200 UI, 1000+ overlays)
+- **Shared Icon Styles:** `.icon-base` class for consistent icon behavior
+- **Extensive Comments:** All adjustable parameters marked with `/* ADJUST THIS */`
+- **Modular Sections:** Each section self-contained with clear boundaries
+
+### Adjustable Parameters:
+Every section includes inline comments for easy customization:
+- Image sizes and cropping
+- Text positioning and sizing
+- Spacing and padding
+- Hover effects and transitions
+
+## Performance Optimizations
+
+- Lazy loading on all images (`loading="lazy"`)
+- Subresource Integrity (SRI) on external stylesheets
+- Security meta tags included (commented out for development)
+- Minimal external dependencies
+
+## Known Issues & Limitations
+
+### YouTube API Console Warnings:
+- `postMessage` origin mismatch warnings (harmless)
+- Will resolve when deployed to HTTPS production domain
+- Does not affect functionality
+
+## Deployment Checklist
+
+- [ ] Uncomment security meta tags in `index.html`
+- [ ] Test on actual mobile devices (iPhone, Android)
+- [ ] Verify all external links work
+- [ ] Test YouTube embeds on production HTTPS domain
+- [ ] Optimize images for web (compression)
+- [ ] Test cross-browser compatibility
+- [ ] Add favicon
+- [ ] Configure proper HTTPS hosting
+
+## Hosting Options
+
+**Recommended static hosts:**
+- Netlify (free tier available)
+- Vercel (free tier available)
+- GitHub Pages (requires public repo)
+- Any static file host with HTTPS
+
+**Requirements:**
+- HTTPS support (required for YouTube embeds)
+- Static file serving
+- No server-side processing needed
+
+## Development Notes
+
+- All images are in place (no placeholders)
+- Website is in first full draft state
+- Client: Anna Rose Carpenter (A-R)
+- Developer: Phil @ Rogue Drones
 
 ---
-*Last updated: February 4, 2026*
+*Last updated: February 7, 2026*
 
 ```
 
