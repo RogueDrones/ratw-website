@@ -197,7 +197,7 @@ body {
 /* Responsive Design - Mobile */
 @media (max-width: 480px) {
     .scroll-down-arrow {
-        bottom: 20px;
+        bottom: 40px; /* MOBILE FIX: Moved up from 20px for better visibility */
         width: 40px;
         height: 40px;
     }
