@@ -748,7 +748,7 @@ body {
     }
 
     .social-icons {
-        gap: 20px;
+        gap: 10px;
     }
 
     .social-icon {
@@ -900,10 +900,14 @@ body {
         line-height: 1.6;
     }
 
+    .bts-icons {
+        gap: 10px; /* MOBILE FIX: Match Follow Us gap */
+    }
+    
     .bts-icon {
-        width: 20px;
-        height: 20px;
-        font-size: 10px; /* Smaller on mobile */
+        width: 15px;
+        height: 15px;
+        font-size: 7px; /* STANDARDIZED: Match Follow Us icons */
     }   
 }
 
@@ -1081,9 +1085,9 @@ body {
     }
 
     .merch-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 32px;
+        width: 15px;
+        height: 15px;
+        font-size: 7px; /* STANDARDIZED: Match Follow Us icons */
     }
 
     .merch-images-wrapper {
@@ -1318,4 +1322,16 @@ body {
     color: #E91E8C;                          /* ADJUST THIS: Hover color */
     background-color: rgba(233, 30, 140, 0.1); /* ADJUST THIS: Hover background */
     transform: translateY(-3px) scale(1.1);  /* ADJUST THIS: Lift + grow on hover */
+}
+
+/* Mobile Icon Overrides - Reasonable mobile sizing */
+@media (max-width: 480px) {
+    .social-icon,
+    .bts-icon,
+    .merch-icon {
+        width: 30px !important;     /* Reasonable mobile size */
+        height: 30px !important;    /* Reasonable mobile size */
+        font-size: 24px !important; /* Readable icon size */
+        padding: 8px !important;    /* Good tap target */
+    }
 }
