@@ -99,7 +99,8 @@ body {
 /* Responsive Design - Mobile */
 @media (max-width: 480px) {
     .hero-section {
-        padding: 20px 15px 0 15px;
+        padding: 10px 15px 80px 15px; /* MOBILE FIX: Less top space, more bottom for arrow */
+        justify-content: center; /* MOBILE FIX: Align to top instead of center */
     }
 
     .logo-container {
