@@ -752,9 +752,9 @@ body {
     }
 
     .social-icon {
-        width: 20px;
-        height: 20px;
-        font-size: 10px; /* Smaller on mobile */
+        width: 15px;
+        height: 15px;
+        font-size: 7px; /* Smaller on mobile */
     }
 
     .follow-image-wrapper {
