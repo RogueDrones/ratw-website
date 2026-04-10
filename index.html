@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Browser security policies (best effort for static hosting) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com; style-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:; img-src 'self' data: https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+    <!-- Browser security policies for hosts that can't set response headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net data:; img-src 'self' data:; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
     <link rel="icon" type="image/png" sizes="32x32" href="images/logos/black rose png (1).png">
 
@@ -79,13 +77,14 @@
                     <div class="carousel-track">                        
 
                         <!-- Video 1 -->
-                        <div class="carousel-slide">
+                        <div class="carousel-slide active">
                             <div class="video-wrapper">
                                 <iframe width="1455" height="818" 
-                                    src="https://www.youtube.com/embed/a_fgZUi_Xg0?list=RDa_fgZUi_Xg0" 
+                                    src="https://www.youtube-nocookie.com/embed/a_fgZUi_Xg0?rel=0" 
+                                    data-video-src="https://www.youtube-nocookie.com/embed/a_fgZUi_Xg0?rel=0"
                                     title="Bowie in the Bathtub - Rosina &amp; The Weavers (Official Video)" 
                                     frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" 
                                     referrerpolicy="strict-origin-when-cross-origin" 
                                     allowfullscreen
                                     loading="lazy">
@@ -94,13 +93,14 @@
                         </div>
 
                         <!-- Video 2 -->
-                        <div class="carousel-slide active">
+                        <div class="carousel-slide">
                             <div class="video-wrapper">
                                 <iframe width="1455" height="818" 
-                                src="https://www.youtube.com/embed/T2Oo0MAsP7E?list=RDT2Oo0MAsP7E" 
+                                src="https://www.youtube-nocookie.com/embed/T2Oo0MAsP7E?rel=0" 
+                                data-video-src="https://www.youtube-nocookie.com/embed/T2Oo0MAsP7E?rel=0"
                                 title="Friday Night At The Kentish (Official Music Video)" 
                                 frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" 
                                 referrerpolicy="strict-origin-when-cross-origin" 
                                 allowfullscreen
                                 loading="lazy">
@@ -112,10 +112,11 @@
                         <div class="carousel-slide">
                             <div class="video-wrapper">
                                 <iframe width="1455" height="818"  
-                                    src="https://www.youtube.com/embed/Jsvh3Yy6viM?list=RDJsvh3Yy6viM" 
+                                    src="https://www.youtube-nocookie.com/embed/Jsvh3Yy6viM?rel=0" 
+                                    data-video-src="https://www.youtube-nocookie.com/embed/Jsvh3Yy6viM?rel=0"
                                     title="Rosina &amp; The Weavers - &quot;High Country High&quot; (Official Music Video)" 
                                     frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" 
                                     referrerpolicy="strict-origin-when-cross-origin" 
                                     allowfullscreen
                                     loading="lazy">

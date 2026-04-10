@@ -137,19 +137,31 @@ Every section includes inline comments for easy customization:
 
 - Lazy loading on all images (`loading="lazy"`)
 - Subresource Integrity (SRI) on external stylesheets
-- Security meta tags included (commented out for development)
+- Privacy-enhanced YouTube embeds via `youtube-nocookie.com`
+- No third-party video control script required
 - Minimal external dependencies
+
+## Security Hardening
+
+- Tight Content Security Policy in [`index.html`](./index.html) for hosts that only support static files
+- Real security headers configured in [`_headers`](./_headers) for Netlify and Cloudflare Pages style deployments
+- Matching response header config in [`vercel.json`](./vercel.json) for Vercel deployments
+- `Referrer-Policy`, `X-Content-Type-Options`, `Permissions-Policy`, and anti-clickjacking headers included at deploy time
+- External links use `rel="noopener noreferrer"` to prevent reverse-tabnabbing
+
+## Hosting Note
+
+GitHub Pages does not let this repo set custom HTTP security headers directly. If you want the strongest production posture, deploy this static site to a host that honors [`_headers`](./_headers) or [`vercel.json`](./vercel.json), such as Netlify, Cloudflare Pages, or Vercel.
 
 ## Known Issues & Limitations
 
-### YouTube API Console Warnings:
-- `postMessage` origin mismatch warnings (harmless)
-- Will resolve when deployed to HTTPS production domain
-- Does not affect functionality
+### Static Host Limitation:
+- GitHub Pages cannot enforce the custom response headers in this repo
+- The HTML meta policy remains as a fallback, but the strongest protections come from hosts that honor `_headers` or `vercel.json`
 
 ## Deployment Checklist
 
-- [ ] Uncomment security meta tags in `index.html`
+- [ ] Deploy on a host that applies [`_headers`](./_headers) or [`vercel.json`](./vercel.json)
 - [ ] Test on actual mobile devices (iPhone, Android)
 - [ ] Verify all external links work
 - [ ] Test YouTube embeds on production HTTPS domain
